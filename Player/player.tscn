@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1jue12br7g8j"]
+
+[ext_resource type="Script" uid="uid://c38htc36d1xdg" path="res://Player/player.gd" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://citjms51hieo4" path="res://Components/movement_component.tscn" id="2_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://cjl6c7pau0kth" path="res://icon.svg" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://gidl706qlygu" path="res://Components/input_component.tscn" id="4_gwnis"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvfyp"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("movement_component", "input_component")]
+input_pickable = true
+script = ExtResource("1_l8h54")
+movement_component = NodePath("MovementComponent")
+input_component = NodePath("InputComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hvfyp")
+
+[node name="MovementComponent" parent="." instance=ExtResource("2_4ntmi")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.140625, 0.15625)
+texture = ExtResource("3_btcbx")
+
+[node name="InputComponent" parent="." instance=ExtResource("4_gwnis")]
+
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="." to="." method="_on_mouse_shape_exited"]
