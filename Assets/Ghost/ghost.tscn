@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6giphkhh1018"]
+
+[ext_resource type="Script" uid="uid://c5x6h2s2d7cw7" path="res://Assets/Ghost/ghost.gd" id="1_nu53g"]
+
+[node name="Ghost" type="Sprite2D"]
+z_index = -1
+script = ExtResource("1_nu53g")
